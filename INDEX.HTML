@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Expense Tracker</title>
+    <!-- Include Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Include CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>Smart Expense Tracker</h1>
+            </div>
+            <div class="user-profile">
+                <span>Welcome, User</span>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Left Column: Summary & Chart -->
+            <section class="overview-section">
+                <!-- Hero Section: Total Balance -->
+                <div class="hero-card">
+                    <h2>Total Balance</h2>
+                    <h1 id="balance">$0.00</h1>
+                </div>
+
+                <!-- Highlight Cards: Income & Expenses -->
+                <div class="summary-cards">
+                    <div class="summary-card income-card">
+                        <h3>Income</h3>
+                        <p id="total-income" class="money plus">+$0.00</p>
+                    </div>
+                    <div class="summary-card expense-card">
+                        <h3>Expenses</h3>
+                        <p id="total-expense" class="money minus">-$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Expense Chart -->
+                <div class="chart-container card">
+                    <h3>Expenses by Category</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Transactions & Add New -->
+            <section class="details-section">
+                <!-- Add Transaction Form -->
+                <div class="add-transaction card">
+                    <h3>Add New Transaction</h3>
+                    <form id="form">
+                        <div class="form-control">
+                            <label for="text">Description</label>
+                            <input type="text" id="text" placeholder="e.g., Groceries, Salary..." required />
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-control">
+                                <label for="amount">Amount</label>
+                                <input type="number" id="amount" placeholder="0.00" step="0.01" required />
+                            </div>
+                            <div class="form-control">
+                                <label for="type">Type</label>
+                                <select id="type" required>
+                                    <option value="expense">Expense</option>
+                                    <option value="income">Income</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Housing">Housing</option>
+                                <option value="Food">Food</option>
+                                <option value="Transportation">Transportation</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Salary">Salary/Income</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add Transaction</button>
+                    </form>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="transactions card">
+                    <h3>Recent Transactions</h3>
+                    <ul id="transaction-list" class="transaction-list">
+                        <!-- Transactions will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
